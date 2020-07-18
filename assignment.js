@@ -37,7 +37,7 @@ console.log(`Total Weed ${resultWood} qbet Feet}`);
 /**
 ** brickCalculator Function
 */
-let floor = 7
+let floor = 29
 let numberOfBuildingFloor = 30
 let perFeetBricks = 1000
 
@@ -50,15 +50,25 @@ function brickCalculator(numberOfBuildingFloor) {
         if (floor <= 10) {
             totalBricks = i * perFeetBricks * 15 * floor
         } else if (floor <= 20) {
-            totalBricks = i * perFeetBricks * 12 * floor
-        } else if (floor < 30) {
-            totalBricks = i * perFeetBricks * 10 * floor
+            let floor1To10 = 15 * perFeetBricks * 10
+            let extraFloor10To20 = floor - 10
+            extraFloor10To20 = extraFloor10To20 * 12 * perFeetBricks
+
+            totalBricks = floor1To10 + extraFloor10To20
+        } else if (floor <= 30) {
+            floor1To10 = 15 * perFeetBricks * 10
+            let floor11To20 = 12 * perFeetBricks * 10
+            let extraFloor20To30 = floor - 20
+            extraFloor20To30 = extraFloor20To30 * 10 * perFeetBricks
+
+            totalBricks = floor1To10 + floor11To20 + extraFloor20To30
         }
         return totalBricks
     }
 }
 const resultBrick = brickCalculator(numberOfBuildingFloor)
 console.log(resultBrick);
+
 
 
 
